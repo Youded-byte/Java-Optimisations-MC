@@ -7,8 +7,14 @@ Please open an issue if you have a possible configuration with improved performa
 The GraalVM distribution of Java, is made by Oracle, and is equipped with an [advanced](https://www.oracle.com/java/graalvm/) Just-In-Time (JIT) compiler that possibly has [the best performance](https://renaissance.dev/) for long-during intensive tasks. The newest version of the [the community version](https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-22.0.0.2) is open-source. The [enterprise edition](https://www.oracle.com/downloads/graalvm-downloads.html#license-lightbox) is closed-source but may have slight improvements over the community edition, but requires registration at Oracle's website. Lunar Client requires a Java version of 16 or above. GraalVM provides Java 17, which is recommended.
 
 ## Java Options
+For the Enterprise Edition:
 ```yml
--Xverify:none -Xss2M -Xmn1G  -XX:G1HeapRegionSize=2M -XX:GCTimeLimit=50 -server -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2  -XX:+EliminateLocks -Dgraal.TuneInlinerExploration=1 -XX:+EagerJVMCI
+-Xverify:none -Xss2M -Xmn1G -XX:G1HeapRegionSize=2M -XX:GCTimeLimit=50 -server -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -Dgraal.TuneInlinerExploration=1 -XX:+EagerJVMCI
+
+```
+For the Community Edition:
+```yml
+-Xverify:none -Xss2M -Xmn1G -XX:G1HeapRegionSize=2M -XX:GCTimeLimit=50 -server -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+EagerJVMCI
 
 ```
 * Xverify:none causes bytecode not to be checked during runtime. This option is safe to disable on trusted code and speeds up load times.
