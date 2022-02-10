@@ -4,7 +4,7 @@ It is the goal of this repository to have discourse over different java configur
 Please open an issue if you have a possible configuration with improved performance, with benchmarks to support them.
 
 ## Java Distribution
-The GraalVM distribution of Java, is made by Oracle, and is equipped with an [advanced](https://www.oracle.com/java/graalvm/) Just-In-Time (JIT) compiler that possibly has the best performance for long-during intensive tasks. The newest version of the [the community version](https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-22.0.0.2) is open-source. The [enterprise edition](https://www.oracle.com/downloads/graalvm-downloads.html#license-lightbox) is closed-source but may have slight improvements over the community edition, but requires registration at Oracle's website. Lunar Client requires a Java version of 16 or above. GraalVM provides Java 17, which is recommended.
+The GraalVM distribution of Java, is made by Oracle, and is equipped with an [advanced](https://www.oracle.com/java/graalvm/) Just-In-Time (JIT) compiler that possibly has [the best performance](https://renaissance.dev/) for long-during intensive tasks. The newest version of the [the community version](https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-22.0.0.2) is open-source. The [enterprise edition](https://www.oracle.com/downloads/graalvm-downloads.html#license-lightbox) is closed-source but may have slight improvements over the community edition, but requires registration at Oracle's website. Lunar Client requires a Java version of 16 or above. GraalVM provides Java 17, which is recommended.
 
 ## Java Options
 ```yml
