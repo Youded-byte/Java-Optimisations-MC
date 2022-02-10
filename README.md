@@ -21,7 +21,7 @@ The GraalVM distribution of Java, is made by Oracle, and is equipped with an [ad
 * XX:+PerfDisableSharedMem disables some data collection and features of the JVM, but they are not needed in normal usage of Minecraft.
 * XX:+UseLargePages enables usage of large pages which may improve performance. You **must give the user access to this right which is not given by default**. To use this feature refer to [Oracle's website](https://www.oracle.com/java/technologies/javase/largememory-pages.html).
 * XX:+AlwaysPreTouch results in performance improvements, with the reason described [here](https://access.redhat.com/solutions/2685771).
-* XX:JVMCIThreads=2 sets two threads to the JVM Copmiler. The effects of this are not well documented.
+* XX:JVMCIThreads=2 sets two threads to the JVM Compiler. The effects of this are not well documented.
 * XX:+EliminateLocks enhances performance when multiple threads.
 * Dgraal.TuneInlinerExploration=1 is an option that in my testing has improved performance on 1. Information is about it is [here](https://www.graalvm.org/22.0/reference-manual/java/options/). It only takes effect on the enterprise edition of GraalVM.
 * XX:+EagerJVMCI enables the Just-In-Time (JIT) compiler in GraalVM.
