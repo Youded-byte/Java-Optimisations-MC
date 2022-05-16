@@ -12,7 +12,7 @@ For the Enterprise Edition:
 -Xverify:none -Xss2M -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+AlwaysActAsServerClassMachine -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -XX:G1HeapRegionSize=8M -XX:GCTimeLimit=50 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -Dgraal.TuneInlinerExploration=1 -XX:+EagerJVMCI
 
 ```
-For the Community Edition:
+For the Community Edition / other JRE:
 ```yml
 -Xverify:none -Xss2M -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+AlwaysActAsServerClassMachine -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -XX:G1HeapRegionSize=8M -XX:GCTimeLimit=50 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -XX:+EagerJVMCI
 
@@ -36,6 +36,9 @@ For the Community Edition:
 * XX:+AggressiveHeap may enhance performance by more aggressively storing things in memory. It does result in more memory usage.
 * Dgraal.TuneInlinerExploration=1 is an option that in my testing has improved performance on 1. Information is about it is [here](https://www.graalvm.org/22.0/reference-manual/java/options/). It only takes effect on the enterprise edition of GraalVM.
 * XX:+EagerJVMCI enables the Just-In-Time (JIT) compiler in GraalVM.
+
+## Enabling Large Pages on Windows
+While Large Pages works on default on Linux, on Windows you need to go to Local Security Policy, there into Local Policies, then into User Rights Assignment where you can double click on Lock pages in memory. You can add the Group Users, or only your own user as you want.
 
 ## Discourse resulting in improvement
 Different java configurations work differently on different systems, but a 64-bit configuration with about 2-4 GB of RAM available to be allocated to minecraft and at least 4 cores is targeted. If you have suggestions for improvements, please explain why your change would improve performance, and it is best if you provide a simple benchmark, using for example [CapFrameX](https://github.com/CXWorld/CapFrameX).
