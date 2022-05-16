@@ -9,19 +9,23 @@ The GraalVM distribution of Java, is made by Oracle, and is equipped with an [ad
 ## Java Options
 For the Enterprise Edition:
 ```yml
--Xverify:none -Xss2M -Xmn1G -XX:G1HeapRegionSize=2M -XX:GCTimeLimit=50 -server -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -Dgraal.TuneInlinerExploration=1 -XX:+EagerJVMCI
+-Xverify:none -Xss2M -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+AlwaysActAsServerClassMachine -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -XX:G1HeapRegionSize=8M -XX:GCTimeLimit=50 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -Dgraal.TuneInlinerExploration=1 -XX:+EagerJVMCI
 
 ```
 For the Community Edition:
 ```yml
--Xverify:none -Xss2M -Xmn1G -XX:G1HeapRegionSize=2M -XX:GCTimeLimit=50 -server -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -XX:+EagerJVMCI
+-Xverify:none -Xss2M -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+AlwaysActAsServerClassMachine -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -XX:G1HeapRegionSize=8M -XX:GCTimeLimit=50 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -XX:+EagerJVMCI
 
 ```
 * Xverify:none causes bytecode not to be checked during runtime. This option is safe to disable on trusted code and speeds up load times.
 * Xss2M sets the stacks size from the default 1M on 64-bit Java, to 2M. I have noticed a slight increase in performance with this option.
 * Xmn1G sets the size of the heap for young generation objects i.e. those with short life-span to 1 gigabyte. This option's effects have been [documented](https://hypixel.net/threads/getting-better-fps-stablity-by-using-another-jre-with-lunar-client.4518890/).
-* XX:G1HeapRegionSize=2M sets the G1 garbage collectors heap region size to 2M, this option needs to be tested more thoroughly with different values.
+* XX:MaxTenuringThreshold=1 sets the Maximum Tenuring Treshold to 1, resulting in more objects being considered longer lasting and kept away from the GC.
+* XX:SurvivorRatio=32 causes more memory to "survive" from the GC, saving processing power.
+* XX:G1HeapRegionSize=8M sets the G1 garbage collectors heap region size to 8M, by increasing this value, memory can be more easily freed.
 * XX:GCTimeLimit=50 sets the desired ime for garbage collection to take. An amount that is too short may have unwanted consequences. 50 is by many seen as optimal for Minecraft.
+* XX:G1MixedGCCountTarget=4 sets expected length for space-reclamation to 4 from 8, causing garbage collection to be done slower.
+* XX:G1MixedGCLiveThresholdPercent=90 increases the percentage of memory that does not have the be processed by the GC if it is longer lasting.
 * server enables experimental options in the JVM, among with using the optimal garbage collector.
 * XX:-UsePerfData disables data collection and writing of information about performance into files, which may slightly increase performance.
 * XX:+PerfDisableSharedMem disables some data collection and features of the JVM, but they are not needed in normal usage of Minecraft.
