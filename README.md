@@ -14,7 +14,7 @@ For the Enterprise Edition:
 ```
 For the Community Edition / other JRE:
 ```yml
--Xverify:none -Xss2M -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+AlwaysActAsServerClassMachine -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -XX:G1HeapRegionSize=8M -XX:GCTimeLimit=50 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -XX:+EagerJVMCI
+-Xverify:none -Xss2M -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+AlwaysActAsServerClassMachine -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -XX:G1HeapRegionSize=8M -XX:GCTimeLimit=50 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:-UsePerfData -XX:+PerfDisableSharedMem -XX:+UseLargePages -XX:+AlwaysPreTouch -XX:JVMCIThreads=2 -XX:+EliminateLocks -XX:+AggressiveHeap -XX:+EnableJVMCIProduct -XX:+EnableJVMCI -XX:+UseJVMCICompiler -XX:+EagerJVMCI
 
 ```
 * Xverify:none causes bytecode not to be checked during runtime. This option is safe to disable on trusted code and speeds up load times.
